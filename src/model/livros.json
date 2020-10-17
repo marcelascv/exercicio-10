@@ -1,0 +1,72 @@
+[
+    {
+        "id": "1",
+        "titulo": "Rápido e Devagar",
+        "dataPublicacao": "25/10/2011",
+        "pessoaAutora": "Daniel Kahneman",
+        "assunto": "Psicologia"
+    },
+    {
+        "id": "2",
+        "titulo": "JavaScript: O Guia Definitivo",
+        "dataPublicacao": "29/08/2012",
+        "pessoaAutora": "David Flanagan",
+        "assunto": "Tecnologia"
+    },
+    {
+        "id": "3",
+        "titulo": "O Poder do Hábito",
+        "dataPublicacao": "28/02/2012",
+        "pessoaAutora": "Charles Duhigg",
+        "assunto": "Autoajuda"
+    },
+    {
+        "id": "4",
+        "titulo": "A Culpa é das Estrelas",
+        "dataPublicacao": "10/01/2012",
+        "pessoaAutora": "John Green",
+        "assunto": "Romance"
+    },
+    {
+        "id": "5",
+        "titulo": "SCRUM: a arte de fazer o dobro do trabalho na metade do tempo",
+        "dataPublicacao": "30/09/2016",
+        "pessoaAutora": "Jeff Sutherland",
+        "assunto": "Administração"
+    },
+    {
+        "id": "6",
+        "titulo": "Mulheres, Raça e Classe",
+        "dataPublicacao": "31/12/2016",
+        "pessoaAutora": "Angela Davis",
+        "assunto": "Ciências Sociais"
+    },
+    {
+        "id": "7",
+        "titulo": "Comece pelo porquê",
+        "dataPublicacao": "19/10/2018",
+        "pessoaAutora": "Simon Sinek",
+        "assunto": "Autoajuda"
+    },
+    {
+        "id": "8",
+        "titulo": "Ponto de inflexão",
+        "dataPublicacao": "28/01/2019",
+        "pessoaAutora": "Flávio Augusto Da Silva",
+        "assunto": "Administração"
+    },
+    {
+        "id": "9",
+        "titulo": "Storytelling com Dados: Um guia sobre visualização de dados para profissionais de negócios",
+        "dataPublicacao": "07/10/2015",
+        "pessoaAutora": "Cole Nussbaumer Knaflic",
+        "assunto": "Tecnologia"
+    },
+    {
+        "id": "10",
+        "titulo": "O Jeito Harvard de Ser Feliz: O curso mais concorrido da melhor universidade do mundo",
+        "dataPublicacao": "15/03/2012",
+        "pessoaAutora": "Shawn Achor",
+        "assunto": "Administração"
+    }
+]
