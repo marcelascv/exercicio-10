@@ -82,4 +82,61 @@ const deleteLivro = (req, res) => {
     res.status(200).send(livros);
 };
 
-module.exports = { getAll, getByID, getAllTitles, postLivro, deleteLivro }
+const putLivro = (req, res) => {
+    //Pego o id que foi passado por query param
+    const id = req.params.id;
+
+    //Filtro meu arrey de objetos para encontrar o objeto requerido
+    const livroASerModificado = livros.find((livro) => livro.id == id);
+    console.log(livroASerModificado);
+
+    //Pego o corpo da requisição com as alterações
+    const livroAtualizado = req.body;
+    console.log(livroAtualizado);
+
+    //Index
+    const index = livros.indexOf(livroASerModificado);
+    console.log(index);
+
+    //Buscando no array o endereço, excluindo o registro antigo e substituindo pelo novo
+    livros.splice(index, 1, livroAtualizado);
+    console.log(livros);
+
+    fs.writeFile('./src/model/livros.json', JSON.stringify(livros), 'utf8', function(err) {
+        if (err) {
+            return res.status(424).send({ message: err });
+        }
+        console.log('Arquivo atualizado com sucesso!');
+    });
+
+    res.status(200).send(livros);
+};
+
+const patchLivro = (req, res) => {
+    const id = req.params.id;
+    const atualizacao = req.body;
+
+    try {
+        const livroASerModificado = livros.find((livro) => livro.id == id);
+
+        //Ele vai buscar dentro do objeto livroASerModificado atributos
+        //em que o nome coincida com os do objetoAtualizacao, e vai substituir o valor
+
+        Object.keys(atualizacao).forEach((chave) => {
+            livroASerModificado[chave] = atualizacao[chave]
+        })
+
+        fs.writeFile('./src/model/livros.json', JSON.stringify(livros), 'utf8', function(err) {
+            if (err) {
+                return res.status(424).send({ message: err });
+            }
+            console.log('Arquivo atualizado com sucesso!');
+        });
+
+        return res.status(200).send(livros);
+    } catch(err){
+        return res.status(424).send({ message:err });
+    }
+};
+
+module.exports = { getAll, getByID, getAllTitles, postLivro, deleteLivro, putLivro, patchLivro }

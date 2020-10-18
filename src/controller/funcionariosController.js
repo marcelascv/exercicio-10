@@ -82,4 +82,61 @@ const deleteFuncionario = (req, res) => {
     res.status(200).send(funcionarios);
 };
 
-module.exports = { getAll, getByID, getAllNames, postFuncionario, deleteFuncionario }
+const putFuncionario = (req, res) => {
+    //Pego o id que foi passado por query param
+    const id = req.params.id;
+
+    //Filtro meu arrey de objetos para encontrar o objeto requerido
+    const funcionarioASerModificado = funcionarios.find((funcionario) => funcionario.id == id);
+    console.log(funcionarioASerModificado);
+
+    //Pego o corpo da requisição com as alterações
+    const funcionarioAtualizado = req.body;
+    console.log(funcionarioAtualizado);
+
+    //Index
+    const index = funcionarios.indexOf(funcionarioASerModificado);
+    console.log(index);
+
+    //Buscando no array o endereço, excluindo o registro antigo e substituindo pelo novo
+    funcionarios.splice(index, 1, funcionarioAtualizado);
+    console.log(funcionarios);
+
+    fs.writeFile('./src/model/funcionarios.json', JSON.stringify(funcionarios), 'utf8', function(err) {
+        if (err) {
+            return res.status(424).send({ message: err });
+        }
+        console.log('Arquivo atualizado com sucesso!');
+    });
+
+    res.status(200).send(funcionarios);
+};
+
+const patchFuncionario = (req, res) => {
+    const id = req.params.id;
+    const atualizacao = req.body;
+
+    try {
+        const funcionarioASerModificado = funcionarios.find((funcionario) => funcionario.id == id);
+
+        //Ele vai buscar dentro do objeto livroASerModificado atributos
+        //em que o nome coincida com os do objetoAtualizacao, e vai substituir o valor
+
+        Object.keys(atualizacao).forEach((chave) => {
+            funcionarioASerModificado[chave] = atualizacao[chave]
+        })
+
+        fs.writeFile('./src/model/funcionarios.json', JSON.stringify(funcionarios), 'utf8', function(err) {
+            if (err) {
+                return res.status(424).send({ message: err });
+            }
+            console.log('Arquivo atualizado com sucesso!');
+        });
+
+        return res.status(200).send(funcionarios);
+    } catch(err){
+        return res.status(424).send({ message:err });
+    }
+};
+
+module.exports = { getAll, getByID, getAllNames, postFuncionario, deleteFuncionario, putFuncionario, patchFuncionario }

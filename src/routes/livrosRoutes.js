@@ -15,5 +15,7 @@ route.get('/livros/:id', controller.getByID);
 route.get('/titulos', controller.getAllTitles);
 route.post('/livros', controller.postLivro);
 route.delete('/livros/:id', controller.deleteLivro);
+route.put("/livros/:id", controller.putLivro);
+route.patch("/livros/:id", controller.patchLivro);
 
 module.exports = route
